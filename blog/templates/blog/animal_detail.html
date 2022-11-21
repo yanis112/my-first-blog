@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-header">
+    <h1>
+        <h2>Lieu actuel: {{animal.lieu}}</h2>
+    </h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        <b> Changer le lieu : </b> {{ form.as_ul }}
+
+        <button class="button-85" role="button">OK</button>
+
+        <a href="{% url 'animal_list' %}">Back</a>
+      
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <h2>  {{ message }} </h2> 
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div>
+        <img src="{{animal.lieu.photo}}" width="233" height="233">
+        </div>
+
+    </form>
+    
+</div>
+ 
+ 
+{% endblock %}
+
